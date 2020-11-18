@@ -49,6 +49,8 @@
 
 <div class="center-column">
 
+    <h1> TO DO LIST: </h1>
+
     <form method='POST' action='/'>
         {% csrf_token %}
         {{form.title}}
@@ -56,17 +58,17 @@
     </form>
 
     <div class="to-list">
-    {% for task in tasks %}
-        <div class="item-row">
-            <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"> Update </a>
-            <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"> Delete </a> 
+        {% for task in tasks %}
+            <div class="item-row">
+                <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"> Update </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"> Delete </a> 
 
-            {% if task.complete == True %}
-                <strike> {{task}} </strike>
-            {% else %}
-                <span> {{task}} </span>
-            {% endif %}
-        </div>
-    {% endfor %}
+                {% if task.complete == True %}
+                    <strike> {{task}} </strike>
+                {% else %}
+                    <span> {{task}} </span>
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
 </div>
